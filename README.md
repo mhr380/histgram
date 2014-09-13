@@ -7,7 +7,7 @@ Simple gray-scale histgram generator
     $ python histgram.py [path/to/img]
 
 ## Requirement
-OpenCV
+OpenCV 2.4.*
 
 NumPy
 
