@@ -1,16 +1,19 @@
-# histgram.py
----
-## Requirement 
-Python 2.7.2 
+proj-tran
+=========
 
+Simple gray-scale histgram generator
+## Usage
+
+    $ python histgram.py [path/to/img]
+
+## Requirement
 OpenCV
 
-numpy
+NumPy
 
-## Usage
-python histgram.py [imagename]
+## Installation
 
-## Work
-
+    $ git clone git@github.com:hmiha/histgram.git
+    
 ![image](img/workimg.png)
 
