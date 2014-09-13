@@ -9,3 +9,10 @@ numpy
 
 ## Usage
 python histgram.py [imagename]
+
+## Work
+
+[image](img/lena.png)
+
+[image](img/hist.png)
+
