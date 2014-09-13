@@ -33,8 +33,10 @@ def hist(src):
         histImg[height : 256, i] = 0
 
     # show and save histgram
-    cv2.namedWindow("win")
-    cv2.imshow("win", histImg)
+    cv2.namedWindow("InputImg")
+    cv2.namedWindow("Histgram")
+    cv2.imshow("InputImg", src)
+    cv2.imshow("Histgram", histImg)
     cv2.waitKey(0)
     cv2.imwrite("hist.png", histImg)
 
