@@ -1,12 +1,11 @@
-#coding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+author__ = 'Hajime MIHARA'
 
 import cv2
 import numpy as np
 import sys
-
-def imgReader(filename, flag):
-    src = cv2.imread(filename, flag)
-    return src
 
 def hist(src, color):
     # init histgram array
@@ -15,32 +14,34 @@ def hist(src, color):
     # get height and width of img
     h, w = src.shape[:2]
 
-    # get histgram
+    # get histgram by increment
     for y in range(h):
         for x in range(w):
             hist[src[y, x]] += 1
 
-    # get maxlevel to normarize
+    # get maximum level to normarize
     maxLevel = max(hist)
 
+    # color or grayscale
     if color == None:
         # init histgram img
         histImg = 255 * np.ones((256, 256))
     else:
         histImg = 255 * np.ones((256, 256, 3))
 
-    print color 
-
     # draw histgram
     for i in range(256):
+        # current level
         level = hist[i] 
         height = float(maxLevel - level) / maxLevel * 256
 
         if color == None:
+            # in grayscale img, histgram is drawn by black
             histImg[height : 256, i] = 0
         else:
-            histImg[height : 256, i, :] = 0
-            histImg[height : 256, i, color] = 255
+            # in color img, histgram is drawn by 255
+            histImg[height : 256, i, :] = 0         # the background of graph
+            histImg[height : 256, i, color] = 255   # drawn color
 
     # show and save histgram
     cv2.namedWindow("Histgram")
@@ -58,17 +59,20 @@ def main():
     argvs = sys.argv
     filename = argvs[1]
 
-    # readImage
+    # read and show image
     src = cv2.imread(filename, 1)
     cv2.namedWindow("InputImg")
     cv2.imshow("InputImg", src)
 
     # get histgram per color
+    # color = 0: green
+    # color = 1: blue
+    # color = 2: red
     for color in range(3):
         hist(src[:,:,color], color)
 
-    # get histgram of whole image
-    src = imgReader(filename, 0)
+    # get histgram of whole image(use grayscale img)
+    src = cv2.imread(filename, 0)
     hist(src, None)
 
     return
