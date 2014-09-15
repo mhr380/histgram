@@ -51,6 +51,16 @@ def hist(src, color):
 
     return 
 
+def check(filename, src, flag):
+    if src == None:
+        print "Unable to load "+str(filename)
+        print "Exit"
+        sys.exit()
+    else:
+        if flag == 1:
+            print "Successfully loaded "+str(filename)
+        return
+
 def main():
     ### usage:
     ### python histgram.py [imageName]
@@ -61,6 +71,7 @@ def main():
 
     # read and show image
     src = cv2.imread(filename, 1)
+    check(filename, src, 1)
     cv2.namedWindow("InputImg")
     cv2.imshow("InputImg", src)
 
@@ -73,7 +84,11 @@ def main():
 
     # get histgram of whole image(use grayscale img)
     src = cv2.imread(filename, 0)
+    check(filename, src, 0)
+
     hist(src, None)
+
+    print "Fin."
 
     return
 
