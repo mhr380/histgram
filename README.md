@@ -1,7 +1,7 @@
-proj-tran
+Simple Histgram Generator
 =========
 
-Simple gray-scale histgram generator
+Simple histgram generator
 ## Usage
 
     $ python histgram.py [path/to/img]
